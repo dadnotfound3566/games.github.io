@@ -1,8 +1,9 @@
 var xJOS = 225;
 var yJOS = 375;
+var snelheidJOS = 17;
 
 function setup() {
-  canvas = createCanvas(450,450);
+  canvas = createCanvas(450, 450);
   canvas.parent('processing');
   textFont("Verdana");
   textSize(14);
@@ -12,29 +13,29 @@ function setup() {
 function draw() {
   background('lavender');
   fill('black');
-  // yJOS--;
 
-  xJOS=constrain(xJOS,75,width-75);
-  yJOS=constrain(yJOS,75,height-75);
-  text("x = " + round(xJOS) + " y = " + yJOS,10,20);
-  
-  translate(xJOS,yJOS);
+  xJOS = constrain(xJOS, 75, width - 75);
+  yJOS = constrain(yJOS, 75, height - 75);
+
+  text("x = " + round(xJOS) + " y = " + yJOS + " snelheid = " + snelheidJOS, 10, 20);
+
+  translate(xJOS, yJOS);
 
   // in de volgende regels wordt JOS getekend
 
   push();
-  scale(1);  
+  scale(1);
   noStroke();
   fill('indianred');
-  ellipse(0,0,150);
+  ellipse(0, 0, 150);
   fill('slategray');
-  ellipse(-20,-30,50);
-  ellipse(20,-30,50);
+  ellipse(-20, -30, 50);
+  ellipse(20, -30, 50);
   fill('white');
-  ellipse(-20,-25,20,40);
-  ellipse(20,-25,20,40);
+  ellipse(-20, -25, 20, 40);
+  ellipse(20, -25, 20, 40);
   fill('orange');
-  ellipse(0,10,50);
+  ellipse(0, 10, 50);
   stroke('slategray');
   strokeWeight(10);
   fill('white');
@@ -42,4 +43,6 @@ function draw() {
   pop();
   // einde tekenen JOS
 
+  yJOS -= snelheidJOS; // JOS beweegt omhoog
+  snelheidJOS -= 0.5; // Snelheid neemt af
 }

@@ -20,20 +20,31 @@ function draw() {
   stroke('white');
   strokeWeight(10);
 
-  if (mouseIsPressed == true && snelheid == 5) {
-      fill('green');
+  if (mouseIsPressed == true && snelheid == 5 || mouseIsPressed == true && snelheid-5) {
+      fill('red');
   }
+
   else {
     fill('dodgerblue');
   }
   
-  if (x>880) {
-    snelheid = -1*snelheid;
-  }
-  if (x<120) {
-    snelheid = -1*snelheid;
+  if(snelheid == 5) {
+fill('green')
   }
 
-  x += snelheid;
+if (mouseIsPressed == true && snelheid == 5 ) {
+  fill ('red')
+}
+
+  if (x > 880 || x < 120) { snelheid = -1*snelheid; }
+
+  if (mouseIsPressed == false) {
+   ellipse(x,170,100)
+  }
+ 
+  else {
   ellipse(x,170,diameter);
+}
+
+x += snelheid;
 }
