@@ -20,6 +20,13 @@ function draw() {
     y += 5;
   }
 
+  if (keyIsDown(LEFT_ARROW)) {
+    x -= 5;
+  }
+  if (keyIsDown(RIGHT_ARROW)) {
+    x += 5;
+  }
+  x = constrain (x,0,width - 100)
   y = constrain(y,0,height - 100);
 
   if (y >= 75 && y <= 225) {

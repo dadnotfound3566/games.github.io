@@ -30,20 +30,32 @@ function draw() {
   
   // Pas onderstaande regel aan: gebruik de functie dist om de onderlinge afstand te bepalen
   
-  onderlingeAfstand = 1;
-  if (onderlingeAfstand <= 0) {
-    eindScherm();
-    noLoop();
-  }
+  onderlingeAfstand = dist(xPositie, yPositie, 550, height - straal);
+if (onderlingeAfstand <= straal) {
+  eindScherm();
+  noLoop();
+}
   
   // door de slashes weg te halen kun je besturing van de bal inschakelen.
   // Om het wat moeilijker te maken veranderen er bij gebruik van een pijltoets 2 dingen tegelijkertijd.
   
-  // gebruikBesturing();
+  gebruikBesturing();
 
-  if (yPositie<straal || yPositie>height-straal) {
+  onderlingeAfstand = dist(xPositie, yPositie, 550, height - straal);
+
+if (onderlingeAfstand <= 2 * straal) {
+  eindScherm();
+  noLoop();
+}
+  if (xPositie <= straal || xPositie >= width - straal) {
+    xSnelheid *= -1;
+  }
+
+  if (yPositie < straal || yPositie > height - straal) {
     ySnelheid *= -1;
-  } 
+  }
+
+  
 }
 
 function gebruikBesturing() {
@@ -57,9 +69,12 @@ function gebruikBesturing() {
   }    
 }
 
+
+
 function eindScherm() {
   background('white');
   fill('black');
   text("GEVANGEN!",75,200);
   noLoop();
+
 }
