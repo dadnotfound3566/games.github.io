@@ -31,5 +31,9 @@ function draw() {
   if (keyIsDown(RIGHT_ARROW)) {
     aantal++;
   }   
+
+
 }
+
+
 
