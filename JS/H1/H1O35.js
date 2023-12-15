@@ -13,15 +13,20 @@ function setup() {
 }
 
 function draw() {
-  tekenRij(4);
-}
-
-function tekenRij(aantalStenen) {
-  inspringen = 0;
-  push();
-  translate(inspringen,0);
-  for (var steen = 0;steen < aantalStenen;steen++) {
-    rect(breedte*steen,0,breedte,hoogte);
+  for (var laag=0;laag<=aantalLagen;laag++){
+   tekenRij(laag + 1);
+   translate(0,hoogte);
+   }
   }
-  pop();
-}
+  function tekenRij(aantalStenen) {
+   
+   inspringen = (aantalLagen-aantalStenen)*0.5*breedte;
+   push();
+   translate(inspringen,0);
+   for (var steen = 0;steen < aantalStenen; steen++) {
+   rect(breedte*steen,0,breedte,hoogte);
+   }
+   pop();
+  }
+  
+  
