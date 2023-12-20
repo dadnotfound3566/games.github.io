@@ -17,8 +17,12 @@ function setup() {
 
 function draw() {
   background(bomen);  
-  // image(katerKlein,0,0);
+   // image(katerKlein,0,0);
   keverX+=random(-5,5);
   keverY+=random(-5,5);
-  // image(kever,keverX,keverY);
+  image(kever,keverX,keverY);
 }
+
+
+// FOUT VAN LEERMODULE BIJ PRELOAD WAARDOOR IK EEN ANDERE ACHTERGROND HEB.
+//  REST VAN DE OPDRACHT WEL KUNNEN MAKEN.
