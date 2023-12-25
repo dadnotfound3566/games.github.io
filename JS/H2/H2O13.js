@@ -1,5 +1,5 @@
-var aantalRijenRaster = 6;
-var aantalKolommenRaster = 9;
+var aantalRijenRaster = 12;
+var aantalKolommenRaster = 18;
 var celGrootte;
 
 var animatie = [];
@@ -9,6 +9,8 @@ var nummer = 3;
 var frame;
 var xJos = 400;
 var yJos = 300;
+
+let lastPressedKey = false;
 
 function preload() {
   brug = loadImage("images/backgrounds/dame_op_brug_1800.jpg");
@@ -24,11 +26,10 @@ function preload() {
 function setup() {
   canvas = createCanvas(900,600);
   canvas.parent('processing');
-  frameRate(2);
+  frameRate(5);
   celGrootte = width / aantalKolommenRaster;
 }
 
-// animatie moet blijven tot er op een andere knop wordt geklikt
 function draw() {
   background(brug);
   tekenRaster();
@@ -36,26 +37,44 @@ function draw() {
   if (keyIsDown(LEFT_ARROW)) { 
     xJos -= celGrootte;
      nummer = 2;
+     lastPressedKey = LEFT_ARROW;
   }
-
   if (keyIsDown(RIGHT_ARROW)) {
     xJos += celGrootte;
     nummer = 1;
+    lastPressedKey = RIGHT_ARROW;
   }
   if (keyIsDown(UP_ARROW)) {
     yJos -= celGrootte;
-    nummer = 4
+    nummer = 4 ;
+    lastPressedKey = UP_ARROW;
   }
   if (keyIsDown(DOWN_ARROW)) {
     yJos += celGrootte;
-    nummer = 5
+    nummer = 5;
+    lastPressedKey = DOWN_ARROW;
   }
+
+
+  if(lastPressedKey == RIGHT_ARROW){
+    nummer = 1;
+  }
+  if(lastPressedKey == LEFT_ARROW){
+    nummer = 2;
+  }
+  if(lastPressedKey == UP_ARROW){
+    nummer = 4;
+  }
+  if(lastPressedKey == DOWN_ARROW){
+    nummer = 5;
+  }
+  
 
   xJos = constrain(xJos, 0, width - celGrootte);
   yJos = constrain(yJos, 0, height - celGrootte);
 
   
-  image(animatie[nummer], xJos, yJos);
+  image(animatie[nummer], xJos, yJos, celGrootte, celGrootte);
   nummer = (frameCount) % aantalBeeldjes;
 }
 
