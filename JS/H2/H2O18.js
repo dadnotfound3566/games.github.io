@@ -1,14 +1,14 @@
 var jos = {
   x: null,
-  y: 125,
+  y: null,
   schaal: 1.0,
   naam: "Jos",
   
-  teken(muisPositieX) {
+  teken(muisPositieX, muisPositieY) {
     this.x = muisPositieX;
-
-    // de regels hieronder tot en met pop() zorgen dat Jos wordt getekend. Je hoeft ze niet aan te passen.
-    
+    this.schaal = this.x / (0.25*width);
+    this.y = muisPositieY;
+    this.y = constrain(this.y, 100, 150);
     push();
     translate(this.x,this.y);
     scale(this.schaal);
@@ -44,7 +44,6 @@ function setup() {
 
 function draw() {
   background('lavender');
-  jos.teken(500);
-  
-  text(jos.naam+" wordt getekend op x-positie (middelpunt neus) " + jos.x + ".",20,20);
+  jos.teken(mouseX, mouseY);
+  text(jos.naam + " bevindt zich op x-positie " + jos.x + ",de y-positie is " + jos.y + " en de schaal is " + jos.schaal + ".",20,20 )
 }

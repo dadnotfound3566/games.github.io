@@ -1,6 +1,6 @@
 var raster = {
-  aantalRijen: 6,
-  aantalKolommen: 9,
+  aantalRijen: 18,
+  aantalKolommen: 27,
   celGrootte: null,
   
   berekenCelGrootte() {
@@ -18,7 +18,8 @@ var raster = {
     pop();
   }
 }
-
+ // zie 105 van die bijlage mdet opdrachten enz
+ 
 var jos = {
   x: 400,
   y: 300,
@@ -29,7 +30,7 @@ var jos = {
 
   beweeg() {
     if (keyIsDown(LEFT_ARROW)) {
-      this.x -= raster.celGrootte;
+      this.x -= this.stapGrootte;
       this.frameNummer = 2;
     }
     if (keyIsDown(RIGHT_ARROW)) {
@@ -75,4 +76,5 @@ function draw() {
   raster.teken();
   jos.beweeg();
   jos.toon();
+  text(jos.animatie[3].width,5,15);
 }
