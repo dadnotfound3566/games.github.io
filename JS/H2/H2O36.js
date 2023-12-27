@@ -12,7 +12,7 @@ class Boom {
       this.leeftijd++;
     }
   }
-
+ 
   teken() {
     push();
     translate(this.x,375);
