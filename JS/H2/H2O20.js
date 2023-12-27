@@ -18,7 +18,6 @@ var raster = {
     pop();
   }
 }
- // zie 105 van die bijlage mdet opdrachten enz
  
 var jos = {
   x: 400,

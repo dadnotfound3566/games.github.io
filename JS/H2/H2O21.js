@@ -21,6 +21,11 @@ var cirkel = {
 
   controleerRaak() {
     afstandMuisCirkel = dist(mouseX,mouseY,this.x,this.y);
+    if (afstandMuisCirkel <= 40 && mouseIsPressed === true) {
+     this.alpha *= 0.80;
+     this.kiesEenPlek();
+     this.aantalRaak++;
+    }
 
   }
 }
@@ -46,7 +51,8 @@ function draw() {
   if (keyIsPressed) {
     background('black');
   }
-
   cirkel.controleerRaak();
   cirkel.teken();
+
+  text(cirkel.aantalRaak + " raak geklikt", 10,30);
 }
