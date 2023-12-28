@@ -8,7 +8,7 @@ class Boom {
   }
   
   groei() {
-    if (this.leeftijd < 20) {
+    if (this.leeftijd < 10) {
       this.leeftijd++;
     }
   }
@@ -24,7 +24,6 @@ class Boom {
   }
 }
 
-// we maken een lege array waar alle objecten in komen te staan
 var bomen = [];
 
 function setup() {
@@ -33,18 +32,23 @@ function setup() {
   noStroke();
   frameRate(1);
   
-  for (var b = 0; b < 10; b++) {
+  for (var b = 0; b < 20; b++) {
     bomen.push(new Boom());
   }
 }
 
 function draw() {
-  background('orange');
+  background('orange'); 
   fill('wheat');
-  rect(0,350,canvas.width,canvas.height-350);
+  rect(0, 350, canvas.width, canvas.height - 350);
   
-  for (var n = 0;n < bomen.length;n++) {
+  for (var n = 0; n < bomen.length; n++) {
     bomen[n].teken();
     bomen[n].groei();
+    
+    if (bomen[n].leeftijd === 10) {
+      bomen.splice(n, 1);
+      n--; 
+    }
   }
 }

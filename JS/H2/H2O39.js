@@ -10,7 +10,7 @@ class Knikker {
   }
   
   gaNaarMuis(muisX,muisY) {
-
+ 
   }  
 
   beweeg() {

@@ -40,16 +40,16 @@ function setup() {
     knikkerVerzameling.push(new Knikker(random(20,980),random(20,280),'white'));
   }  
 }
-
-function draw() {
-  background(0,0,75,0.2);
-  for (var i = 0; i < knikkerVerzameling.length; i++) {
-    knikkerVerzameling[i].beweeg();
-    knikkerVerzameling[i].teken();
-  } 
-  if (mouseIsPressed) {
+  function draw() { 
+    background(0, 0, 75, 0.2);
+  
+    if (mouseIsPressed) {
+      knikkerVerzameling.push(new Knikker(mouseX, mouseY, 'red'));
+    }
+  
     for (var i = 0; i < knikkerVerzameling.length; i++) {
       knikkerVerzameling[i].beweeg();
+      knikkerVerzameling[i].teken();
     }
   }
-}
+  
